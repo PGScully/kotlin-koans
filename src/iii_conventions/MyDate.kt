@@ -20,11 +20,12 @@ operator fun MyDate.plus(interval: RepeatedTimeInterval): MyDate =
 enum class TimeInterval {
     DAY,
     WEEK,
-    YEAR;
-
-    operator fun times(count: Int): RepeatedTimeInterval =
-            RepeatedTimeInterval(timeInterval = this, count = count)
+    YEAR
 }
+
+operator fun TimeInterval.times(count: Int): RepeatedTimeInterval =
+        RepeatedTimeInterval(timeInterval = this, count = count)
+
 class RepeatedTimeInterval(val timeInterval: TimeInterval, val count: Int)
 
 class DateRange(val start: MyDate, val endInclusive: MyDate): Iterable<MyDate> {
